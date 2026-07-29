@@ -1,37 +1,159 @@
-# macOS
-.DS_Store
-**/.DS_Store
+# Unified ignore rules for full-stack skill repositories.
 
-# Video render temp (render-video.js 产物)
-.video-tmp-*/
-**/.video-tmp-*/
+### Rust / Cargo ###
+target/
+**/target/
+Cargo.lock
+!**/src/main/**/target/
+!**/src/test/**/target/
 
-# Personal asset index（个人真实数据，只保留 .example.json 模板）
-assets/personal-asset-index.json
+### Java / Maven / Gradle ###
+bin/
+codes/
+.gradle
+/build/
+build/
+**/build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+!.mvn/wrapper/maven-wrapper.jar
+!gradle/wrapper/gradle-wrapper.jar
+.flattened-pom.xml
+.fastRequest
+**/dependency-reduced-pom.xml
+pom.xml.versionsBackup
+*.war
+*.ear
+*.tar
+*.tar.gz
+!/libs/*.jar
 
-# 环境变量（API key 等敏感信息，只保留 .env.example 模板）
+### Spring Tool Suite ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.settings/
+.springBeans
+.sts4-cache
+rebel.xml
+
+### IntelliJ IDEA ###
+.idea
+.idea/
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+nbproject/private/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Node.js / frontend ###
+node_modules
+node_modules/
+**/node_modules/
+**/dist/
+**/.output/
+**/.vite/
+**/.cache/
+**/.parcel-cache/
+**/*.tsbuildinfo
+**/coverage/
+**/storybook-static/
+**/boba-tea-shop/supervisor-agent/**/static/
+
+### Python ###
+__pycache__/
+*.py[cod]
+*.pyc
+*$py.class
+*.egg-info/
+.venv/
+fix_chinese.py
+
+### Documentation ###
+docs/_build
+
+### Environment and local secrets ###
 .env
 .env.local
+**/.env.local
+**/.env.*.local
+*.json
+!cloud-agents-server/agents/maternal-recovery.json
+assets/personal-asset-index.json
 
-# Voiceover 工作目录（TTS mp3、timeline.json 临时产物，可重新生成）
+### Logs ###
+logs/
+/logs/
+*.log
+log.*/
+
+### OS files ###
+.DS_Store
+**/.DS_Store
+Thumbs.db
+.metadata
+Servers
+
+### Editor and temporary files ###
+*.swp
+*.swo
+*.cache
+*.diff
+*.patch
+*.tmp
+*.java~
+*.properties~
+*.xml~
+*.gz
+*.http
+
+### Agent and local tooling ###
+.claude
+.claude/
+openspec
+AGENTS.md
+CLAUDE.md
+.agentscope/
+.mimocode/
+.codegraph/
+input/
+trace-report-*.md
+
+### Local databases ###
+**/*.db
+/agentdb.rvf
+/agentdb.rvf.lock
+/ruvector.db
+
+### Local server data ###
+/server/nacos-server/data
+/server/nacos-server/logs
+upload
+gen_code
+
+### Design and media build artifacts ###
+.video-tmp-*/
+**/.video-tmp-*/
 **/_narration/
 **/_narration_*/
-
-# Node / editor / OS
-node_modules/
-*.swp
-.idea/
-.vscode/
-Thumbs.db
-
-# Verification artifacts（截图、临时测试脚本）
 demos/_frames_*.png
 demos/_verify.js
 demos/_verify.mjs
-
-# 开发/测试中间产物（skill 内部研发用，不分发给用户）
 _style-research/
 **/design-demos/
-
-# Demo 大视频（用 GitHub Releases 分发，不进仓库膨胀）
 demos/**/*.mp4
